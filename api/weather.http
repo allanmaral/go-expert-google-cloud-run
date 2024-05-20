@@ -1,15 +1,18 @@
+# @baseurl = https://go-expert-google-cloud-run-weather-api-3vpr3ze2ra-uc.a.run.app
+@baseurl = http://localhost:8080
+
 ### Weather from valid CEP
 
-GET http://localhost:8080/api/weather/70150900
+GET {{baseurl}}/api/weather/70150900
 
 
 
 ### Weather from non-existent CEP
 
-GET http://localhost:8080/api/weather/99999999
+GET {{baseurl}}/api/weather/99999999
 
 
 
 ### Weather from invalid CEP
 
-GET http://localhost:8080/api/weather/123
+GET {{baseurl}}/api/weather/123

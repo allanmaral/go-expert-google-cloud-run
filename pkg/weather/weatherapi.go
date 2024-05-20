@@ -2,6 +2,7 @@ package weather
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -16,13 +17,18 @@ type weatherAPIResponse struct {
 
 type WeatherAPILoader struct {
 	apikey string
+	client *http.Client
 }
 
 var _ Loader = &WeatherAPILoader{}
 
 func NewWeatherAPILoader(apikey string) *WeatherAPILoader {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
 	return &WeatherAPILoader{
 		apikey: apikey,
+		client: &http.Client{Transport: tr},
 	}
 }
 
@@ -35,8 +41,7 @@ func (l *WeatherAPILoader) Load(ctx context.Context, lat, lng string) (Weather, 
 
 	req = req.WithContext(ctx)
 
-	client := http.DefaultClient
-	res, err := client.Do(req)
+	res, err := l.client.Do(req)
 	if err != nil {
 		return Weather{}, err
 	}

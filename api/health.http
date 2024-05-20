@@ -1,3 +1,6 @@
+# @baseurl = https://go-expert-google-cloud-run-weather-api-3vpr3ze2ra-uc.a.run.app
+@baseurl = http://localhost:8080
+
 ### API Health Status
 
-GET localhost:8080/api/health
+GET {{baseurl}}/api/health HTTP/1.1

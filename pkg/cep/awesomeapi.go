@@ -2,6 +2,7 @@ package cep
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -25,8 +26,11 @@ type AwesomeAPILoader struct {
 var _ Loader = &AwesomeAPILoader{}
 
 func NewAwesomeAPILoader() *AwesomeAPILoader {
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
 	return &AwesomeAPILoader{
-		client: http.DefaultClient,
+		client: &http.Client{Transport: tr},
 	}
 }
 
