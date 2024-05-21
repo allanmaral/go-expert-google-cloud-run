@@ -15,23 +15,29 @@ Antes de começar, certifique-se de ter instalado os seguintes requisitos:
 
 1. Clone este repositório em sua máquina local:
 
-```bash
-git clone https://github.com/allanmaral/go-expert-google-cloud-run.git
-```
+   ```bash
+   git clone https://github.com/allanmaral/go-expert-google-cloud-run.git
+   ```
 
 1. Navegue até o diretório do projeto:
 
-```bash
-cd go-expert-google-cloud-run
-```
+   ```bash
+   cd go-expert-google-cloud-run
+   ```
 
-1. Duplique o arquivo `.env.example` e renomeie para `.env` e preencha o valor `WEATHER_APIKEY` com a sua chave da [Weather API](https://www.weatherapi.com/)
+1. Duplique o arquivo `.env.example` e renomeie para `.env` e preencha o valor `WEATHER_APIKEY` com a sua chave da [Weather API](https://www.weatherapi.com/):
+
+   ```env
+   HOST=0.0.0.0
+   PORT=8080
+   WEATHER_APIKEY=<WEATHER_API_SECRET_KEY>
+   ```
 
 1. Execute o seguinte comando para subir a API usando o docker compose:
 
-```bash
-docker compose up -d
-```
+   ```bash
+   docker compose up -d
+   ```
 
 ## Acesso aos Serviços
 
