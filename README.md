@@ -33,6 +33,8 @@ Antes de começar, certifique-se de ter instalado os seguintes requisitos:
    WEATHER_APIKEY=<WEATHER_API_SECRET_KEY>
    ```
 
+   **Correção**: Anteriormente, o host era `localhost` o que fazia com que a aplicação recusasse requisições que vinham de fora do container quando execudada dentro do Docker. O `.env.example` foi alterado e o ideal é usar `0.0.0.0`.
+
 1. Execute o seguinte comando para subir a API usando o docker compose:
 
    ```bash
